@@ -15,7 +15,7 @@
         android:id="@+id/preenchaDadosTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Preencha os dados"
+        android:text="Empregos"
         android:textSize="35sp"
         android:gravity="center_horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,6 +47,13 @@
         app:layout_constraintTop_toBottomOf="@id/nomeEt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+    <CheckBox
+        android:id="@+id/receberEmailCb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desejo receber atualizações por e-mail"
+        app:layout_constraintTop_toBottomOf="@id/emailEt"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/telefoneTv"
@@ -57,7 +64,19 @@
         android:layout_margin="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailEt" />
+        app:layout_constraintTop_toBottomOf="@id/receberEmailCb" />
+        <EditText
+            android:id="@+id/telefoneEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(00) 0000-0000"
+            android:ems="10"
+            android:inputType="number"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toBottomOf="@id/telefoneTv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     <RadioGroup
         android:id="@+id/telefoneRg"
@@ -69,38 +88,43 @@
         android:layout_margin="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/telefoneTv">
+        app:layout_constraintTop_toBottomOf="@id/telefoneEt">
         <RadioButton
             android:id="@+id/comercialRb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comercial"
-            android:checked="true"/>
+            android:text="Comercial" />
         <RadioButton
             android:id="@+id/residencialRb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Residencial" />
+            android:text="Residencial"/>
     </RadioGroup>
-
+    <CheckBox
+        android:id="@+id/telefoneCb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desejo inserir o celular"
+        app:layout_constraintTop_toBottomOf="@id/telefoneRg"
+        tools:ignore="MissingConstraints" />
     <LinearLayout
         android:id="@+id/telefoneLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/telefoneRg">
+        app:layout_constraintTop_toBottomOf="@id/telefoneCb">
 
         <EditText
             android:id="@+id/celularEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefone celular"
+            android:hint="(00) 00000-0000"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="5dp"
             android:layout_margin="5dp" />
 
@@ -132,8 +156,7 @@
             android:id="@+id/masculinoRb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masculino"
-            android:checked="true"/>
+            android:text="Masculino" />
         <RadioButton
             android:id="@+id/femininoRb"
             android:layout_width="wrap_content"
@@ -179,7 +202,7 @@
             android:layout_height="wrap_content"
             android:hint="Ano de formatura"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="5dp"
             android:layout_margin="5dp" />
     </LinearLayout>
@@ -201,7 +224,7 @@
             android:layout_height="wrap_content"
             android:hint="Ano de conclusao"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="5dp"
             android:layout_margin="5dp" />
 
@@ -253,8 +276,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Data de Nascimento"
-        android:focusable="false"
-        android:inputType="none"
+        android:inputType="date"
         app:layout_constraintTop_toBottomOf="@id/mestradoLl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -264,8 +286,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Vagas de interesse"
-        android:focusable="false"
-        android:inputType="none"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/dataEt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

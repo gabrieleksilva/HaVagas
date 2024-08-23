@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.helper.widget.Carousel.Adapter
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import br.edu.scl.ifsp.ads.pdm.havagas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,26 +24,36 @@ class MainActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val formacao = (view as TextView).text.toString()
-                if (formacao == "Fundamental" || formacao == "Medio"){
-                    amb.fundamentalLl.visibility = View.VISIBLE
-                } else{
-                    if (formacao == "Graduação" || formacao == "Especialização"){
-                        amb.graduacaoLl.visibility = View.VISIBLE
-                    } else{
-                        if (formacao == "Mestrado" || formacao == "Doutorado"){
-                            amb.mestradoLl.visibility = View.VISIBLE
-                            amb.graduacaoLl.visibility = View.VISIBLE
-                        } else{
-                            amb.run{
-                                fundamentalLl.visibility = View.GONE
-                                anoFormatEt.setText("")
-                                graduacaoLl.visibility = View.GONE
-                                anoConcluEt.setText("")
-                                instituicaoEt.setText("")
-                                mestradoLl.visibility = View.GONE
-                                monografiaEt.setText("")
-                                orientadorEt.setText("")
-                            }
+
+                when (formacao) {
+                    "Fundamental", "Medio" -> {
+                        amb.run {
+                            amb.fundamentalLl.visibility = View.VISIBLE
+                            amb.graduacaoLl.visibility = View.GONE
+                            amb.anoConcluEt.setText("")
+                            amb.instituicaoEt.setText("")
+                            amb.mestradoLl.visibility = View.GONE
+                            amb.monografiaEt.setText("")
+                            amb.orientadorEt.setText("")
+                        }
+                    }
+                    "Graduação", "Especialização" -> {
+                        amb.run{
+                            graduacaoLl.visibility = View.VISIBLE
+                            fundamentalLl.visibility = View.GONE
+                            anoFormatEt.setText("")
+                            mestradoLl.visibility = View.GONE
+                            monografiaEt.setText("")
+                            orientadorEt.setText("")
+                        }
+
+                    }
+                    else -> {
+                        amb.run{
+                            fundamentalLl.visibility = View.GONE
+                            anoFormatEt.setText("")
+                            mestradoLl.visibility = View.VISIBLE
+                            graduacaoLl.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -57,6 +63,31 @@ class MainActivity : AppCompatActivity() {
                 //NSA
             }
         }
+
+        amb.limparBt.setOnClickListener{
+            amb.nomeEt.text.clear()
+            amb.emailEt.text.clear()
+            amb.celularEt.text.clear()
+            amb.anoFormatEt.text.clear()
+            amb.anoConcluEt.text.clear()
+            amb.instituicaoEt.text.clear()
+            amb.monografiaEt.text.clear()
+            amb.orientadorEt.text.clear()
+            amb.dataEt.text.clear()
+            amb.telefoneEt.text.clear()
+            amb.interesseEt.text.clear()
+            amb.telefoneRg.clearCheck()
+            amb.sexoRg.clearCheck()
+            amb.telefoneCb.isChecked= false
+            amb.receberEmailCb.isChecked= false
+        }
+        amb.telefoneCb.setOnClickListener{
+            //Verifica se o CheckBox está selecionado
+            if (amb.telefoneCb.isChecked) {
+                amb.telefoneLl.visibility = View.VISIBLE
+            }
+        }
+
 
     }
 }
