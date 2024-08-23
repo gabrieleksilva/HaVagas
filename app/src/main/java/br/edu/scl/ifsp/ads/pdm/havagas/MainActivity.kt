@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.scl.ifsp.ads.pdm.havagas.databinding.ActivityMainBinding
 
@@ -85,9 +86,14 @@ class MainActivity : AppCompatActivity() {
             //Verifica se o CheckBox está selecionado
             if (amb.telefoneCb.isChecked) {
                 amb.telefoneLl.visibility = View.VISIBLE
+            } else {
+                amb.telefoneLl.visibility = View.GONE
             }
         }
 
+        amb.salvarBt.setOnClickListener{
+            Toast.makeText(this@MainActivity, "salvo", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
